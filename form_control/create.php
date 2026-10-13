@@ -26,14 +26,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     try {
         $dsn = "mysql:host=$host;dbname=$dbname";
-
         $pdo = new PDO($dsn, $username, $password);
-
         //Nastavuje vyhazování vyjímek při chybě
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //Výchozí formát dat bude asociativní pole
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
         // Příprava SQL dotazu s otazníky jako zástupnámi znaky
         $sql = "INSERT INTO posts (title, content) VALUES (?, ?)";
         $statement = $pdo->prepare($sql);
