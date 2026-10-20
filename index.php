@@ -22,8 +22,9 @@ try {
     foreach ($prispevky as $prispevek) {
         echo ('
             
-            <h1><a href="prispevek.php?id="'.$prispevek["id"].'"> # '.$prispevek["id"].' ' . $prispevek["title"] . ' </a></h1>
+            <h1><a href="prispevek.php?id='.$prispevek["id"].'"> # '.$prispevek["id"].' ' . $prispevek["title"] . ' </a></h1>
             <p>' . $prispevek["content"] . '</p>
+            <a href="edit.php?id='.$prispevek["id"].'">Editovat</a>
         ');
     }
 
