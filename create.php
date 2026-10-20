@@ -7,8 +7,7 @@
 <form method="POST" action="form_control/create.php">
     <input type="text" name="title">
     <br>
-    <textarea name="content" required>
-            </textarea>
+    <textarea name="content" required></textarea>
     <br>
     <input type="submit">
 </form>
