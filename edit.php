@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form method="POST" action="form_control/edit.php">
         <?php
         $host = "192.168.100.88";
         $dbname = "tester_blog1";
@@ -33,6 +33,7 @@
                     $statement->execute([$id]);
                     $row = $statement->fetch();
                     echo ('
+        <input type="hidden" name="id" value="'.$row["id"].'">
         <input type="text" name="title" value="'.$row["title"].'">
         <br>
         <textarea name="content">' .$row["content"] .'</textarea>
