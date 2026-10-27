@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="form_control/edit.php">
+    <form method="POST" action="form_control/post/edit.php">
         <?php
         $host = "192.168.100.88";
         $dbname = "tester_blog1";
