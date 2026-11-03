@@ -25,6 +25,7 @@ try {
             <h1><a href="prispevek.php?id='.$prispevek["id"].'"> # '.$prispevek["id"].' ' . $prispevek["title"] . ' </a></h1>
             <p>' . $prispevek["content"] . '</p>
             <a href="edit.php?id='.$prispevek["id"].'">Editovat</a>
+            <a href="delete.php?id='.$prispevek["id"].'">Smazat</a>
         ');
     }
 
