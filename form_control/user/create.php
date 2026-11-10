@@ -19,6 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "Hesla se neshodují!";
         die();
     }
+    print_r($password);
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     $host = "192.168.100.88";
