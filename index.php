@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = "192.168.100.88";
 $dbname = "tester_blog1";
 $username = "tester";
@@ -29,7 +30,11 @@ require_once("layout/header.php");
 require_once("layout/navigation.php");
 ?>
     <div class="container mt-3">
-        <a href="create_post.php" class="btn btn-primary mt-2 mb-2">Přidat příspěvek</a>
+        <?php
+        if(isset($_SESSION["username"])) {
+            echo ('<a href="create_post.php" class="btn btn-primary mt-2 mb-2">Přidat příspěvek</a>');
+        }
+        ?>
         <?php
         foreach ($prispevky as $prispevek) {
             echo ('
