@@ -1,3 +1,29 @@
+<?php
+$host = "192.168.100.88";
+$dbname = "tester_blog1";
+$username = "tester";
+$password = "tester";
+$prispevky = null;
+try {
+    $dsn = "mysql:host=$host;dbname=$dbname";
+
+    $pdo = new PDO($dsn, $username, $password);
+
+    //Nastavuje vyhazování vyjímek při chybě
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //Výchozí formát dat bude asociativní pole
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    // Příprava SQL dotazu s otazníky jako zástupnámi znaky
+    $sql = "SELECT * FROM posts";
+    $statement = $pdo->query($sql);
+
+    $prispevky = $statement->fetchAll();
+
+} catch (PDOException $e) {
+    die("Chyba připojení " . $e->getMessage());
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,6 +71,27 @@
             </div>
         </nav>
     </div>
+
+    <div class="container mt-3">
+        <?php
+        foreach ($prispevky as $prispevek) {
+            echo ('
+            <div class="post">
+            <div class="card" style="width: 100%">
+                <div class="card-body">
+                    <h5 class="card-title">'.$prispevek['title'].'</h5>
+                    <p class="card-text">'.$prispevek["content"].'</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+            <br>
+        </div>
+            ');
+        }
+        ?>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
 </body>
 </html>
